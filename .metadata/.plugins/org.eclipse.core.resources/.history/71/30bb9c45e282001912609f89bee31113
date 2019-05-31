@@ -1,0 +1,50 @@
+package com.example.demo;
+
+import javax.sound.midi.MidiDevice.Info;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.example.demo.repositorys.EmployeeRepository;
+import com.example.demo.repositorys.OrderRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Configuration
+@Slf4j
+public class LoadDatabase {
+	
+	private static Logger log = (Logger) LoggerFactory
+		      .getLogger(DemoApplication.class);
+
+	@Bean
+	CommandLineRunner initDataBase(EmployeeRepository repository, OrderRepository orderRepository) {
+		return args ->{
+			log.info("Preloading "+repository.save(new Employee("Junior","Jhony","Administrador")));
+			log.info("Preloading "+repository.save(new Employee("NN","MM","Secretaria")));
+orderRepository.save(new Order("iPhone",Status.IN_PROGRESS));
+			
+			orderRepository.findAll().forEach(order->{
+				log.info("Preload "+order);
+			});
+		};
+	}
+	
+	/*
+	@Bean
+	CommandLineRunner initDataBase(OrderRepository orderRepository) {
+		return args ->{
+			orderRepository.save(new Order("MacBook Pro",Status.COMPLETED));
+			orderRepository.save(new Order("iPhone",Status.IN_PROGRESS));
+			
+			orderRepository.findAll().forEach(order->{
+				log.info("Preload "+order);
+			});
+		}
+	}*/
+	
+	
+}

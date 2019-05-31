@@ -1,0 +1,13 @@
+package com.example.demo;
+
+import org.springframework.hateoas.ResourceAssembler;
+
+public class OrderResourceAssembler implements ResourceAssembler<Order, Long> {
+
+	@Override
+	public Long toResource(Order entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

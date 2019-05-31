@@ -1,0 +1,13 @@
+package com.example.demo;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "CUSTOMER_ORDER")
+public class Order {
+
+}
