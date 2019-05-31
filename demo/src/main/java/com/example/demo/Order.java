@@ -17,6 +17,7 @@ public class Order {
 	private long id;
 	private String description;
 	private Status status;
+	private String algoNuevo
 	
 	public Order() {
 	}
